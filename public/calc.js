@@ -1,3 +1,6 @@
+// Running Total
+// Multiple Values to Operate On
+
 $(document).ready(function() {
   console.log('Loaded');
 });
@@ -32,7 +35,13 @@ $('.operator').click(function(e) {
   if ($(this).text() === '=') {
     oldOp = op;
     op = $(this).text();
-  } else {
+  }
+  // else {
+  // if (operand1 !== '' && operand2 !== '') {
+  //   oldOp = op;
+  //   op = $(this).text();
+  // }
+  else {
       op = $(this).text();
   }
   switch (op) {
@@ -63,32 +72,36 @@ $('.operator').click(function(e) {
       }
       // console.log('operand1 ' + operand1);
       // console.log('operand2 ' + operand2);
+      var result = 0;
       if (oldOp === '+') {
-        var result = parseInt(operand1) + parseInt(operand2);
+        result = parseInt(operand1) + parseInt(operand2);
         console.log(result);
         $('#display').text(result)
       }
 
       if (oldOp === '-') {
-        var result = parseInt(operand1) - parseInt(operand2);
+        result = parseInt(operand1) - parseInt(operand2);
         console.log(result);
         $('#display').text(result)
       }
 
       if (oldOp === 'X') {
-        var result = parseInt(operand1) * parseInt(operand2);
+        result = parseInt(operand1) * parseInt(operand2);
         console.log(result);
         $('#display').text(result)
       }
 
       if (oldOp === '/') {
-        var result = parseInt(operand1) / parseInt(operand2);
+        result = parseInt(operand1) / parseInt(operand2);
         console.log(result);
         $('#display').text(result)
       }
+      // Create Running Total
+      operand1 = result;
+      operand2 = '';
       break;
     default:
-    
+
   }
 });
 
