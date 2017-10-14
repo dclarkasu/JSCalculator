@@ -45,35 +45,44 @@ $('.number').click(function(e) {
 });
 
 //Event Listener for Clicks on Operator Buttons
-$('.operator').click(function(e) {
-  var oldOp = '';
-  if(operand1 !== '' && tempValue.length !=0){
-    $('#display').text('');
-    console.log(op);
-    console.log("in 1");
-    // op = $(this).text();
+  $('.operator').click(function(e) {
+    //Check for decimal
+    if($(this).text() !== '.') {
 
-    setOperands();
-    console.log("a;sdlkfja")
-    runCalc();
-    op = $(this).text();
+    var oldOp = '';
+    if(operand1 !== '' && tempValue.length !=0){
+      $('#display').text('');
+      console.log(op);
+      console.log("in 1");
+      // op = $(this).text();
 
-  }
-  else if (operand1 === '' && tempValue.length != 0){
-    console.log("in 2")
-    setOperands();
-    op = $(this).text();
-  }
-  else if(operand1 !== '' && operand2 !== '') {
-    console.log("in 3")
-    runCalc();
-    op = $(this).text();
-  }
-  else{
-    console.log("in 4")
-    $('#display').text('');
+      setOperands();
+      console.log("a;sdlkfja")
+      runCalc();
       op = $(this).text();
-  }
+
+    }
+    else if (operand1 === '' && tempValue.length != 0){
+      console.log("in 2")
+      setOperands();
+      op = $(this).text();
+    }
+    else if(operand1 !== '' && operand2 !== '') {
+      console.log("in 3")
+      runCalc();
+      op = $(this).text();
+    }
+    else{
+      console.log("in 4")
+      $('#display').text('');
+        op = $(this).text();
+    }
+} else {
+  var display = $('#display').text();
+  $('#display').text(display + $(this).text());
+  tempValue.push($(this).text());
+  console.log(tempValue)
+}
 
 });
 //Function to Run Actual Math Ops
@@ -83,25 +92,25 @@ var runCalc = function(){
   console.log('operand2 ' + operand2);
   var result = 0;
   if (op === '+') {
-    result = parseInt(operand1) + parseInt(operand2);
+    result = parseFloat(operand1) + parseFloat(operand2);
     console.log(result);
     $('#display').text(result)
   }
 
   if (op === '-') {
-    result = parseInt(operand1) - parseInt(operand2);
+    result = parseFloat(operand1) - parseFloat(operand2);
     console.log(result);
     $('#display').text(result)
   }
 
   if (op === 'X') {
-    result = parseInt(operand1) * parseInt(operand2);
+    result = parseFloat(operand1) * parseFloat(operand2);
     console.log(result);
     $('#display').text(result)
   }
 
   if (op === '/') {
-    result = parseInt(operand1) / parseInt(operand2);
+    result = parseFloat(operand1) / parseFloat(operand2);
     console.log(result);
     $('#display').text(result)
   }
