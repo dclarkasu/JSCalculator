@@ -7,6 +7,7 @@ var operand2 = '';
 var tempValue = [];
 var op = null;
 
+//Clear Function Event Listener
 $('#clear').click(function(e) {
   // console.log("CLEAR CLICKED");
   $('#display').text('');
@@ -16,6 +17,7 @@ $('#clear').click(function(e) {
   tempValue = [];
 });
 
+//Click Event Listener for Number Buttons
 $('.number').click(function(e) {
   var display = $('#display').text();
   $('#display').text(display + $(this).text());
@@ -24,67 +26,129 @@ $('.number').click(function(e) {
   // console.log(result);
 });
 
+//Event Listener for Clicks on Operator Buttons
 $('.operator').click(function(e) {
   var oldOp = '';
-  if($(this).text() === '='){
+  if ($(this).text() === '=') {
     oldOp = op;
     op = $(this).text();
-  }
-  else{
-    op = $(this).text();
+  } else {
+      op = $(this).text();
   }
   switch (op) {
     case '+':
-    if(operand1 === '') {
-      operand1 = tempValue.join('');
-      $('#display').text('')
-      tempValue = [];
-      op = '+';
-    }
-    else if(operand2 === '') {
-      operand2 = tempValue.join('');
-      $('#display').text('')
-      tempValue = [];
-      op = '+';
-    }
-      console.log(operand1 + '' + op);//???
-      console.log(operand2 + '' + op);//???
+    setOperands(op);
+
+      // console.log(operand1 + '' + op);
+      // console.log(operand2 + '' + op);
       break;
     case '-':
+      setOperands(op);
 
       break;
     case 'X':
+      setOperands(op);
 
       break;
     case '/':
+      setOperands(op);
 
       break;
-    case '='://?? How do I perform the right action on equals
-
-    if(operand2 === '') {
-      operand2 = tempValue.join('');
-      $('#display').text('')
-      tempValue = [];
-    }
-    console.log('operand1 ' + operand1);
-    console.log('operand2 ' + operand2);
-      if(oldOp === '+') {
+    case '=':
+    //Performs all Mathematical Operations
+      if (operand2 === '') {
+        operand2 = tempValue.join('');
+        $('#display').text('')
+        tempValue = [];
+      }
+      // console.log('operand1 ' + operand1);
+      // console.log('operand2 ' + operand2);
+      if (oldOp === '+') {
         var result = parseInt(operand1) + parseInt(operand2);
+        console.log(result);
+        $('#display').text(result)
+      }
+
+      if (oldOp === '-') {
+        var result = parseInt(operand1) - parseInt(operand2);
+        console.log(result);
+        $('#display').text(result)
+      }
+
+      if (oldOp === 'X') {
+        var result = parseInt(operand1) * parseInt(operand2);
+        console.log(result);
+        $('#display').text(result)
+      }
+
+      if (oldOp === '/') {
+        var result = parseInt(operand1) / parseInt(operand2);
         console.log(result);
         $('#display').text(result)
       }
       break;
     default:
-
+    
   }
 });
 
-
-
-// Press operator:
-// perform a join and store it
-// save the selected operator into op
-//
-// press = :
-// set op2 = result (the joined string)
-// Then perform actual math operation and store/display
+//Function
+var setOperands = function(op) {
+console.log("in setOperands function");
+//Set Addition Operator
+  if(op === '+') {
+    if (operand1 === '') {
+      operand1 = tempValue.join('');
+      $('#display').text('')
+      tempValue = [];
+      op = '+';
+    } else if (operand2 === '') {
+        operand2 = tempValue.join('');
+        $('#display').text('')
+        tempValue = [];
+        op = '+';
+    }
+  }
+  //Set Subtraction Operator
+  if(op === '-') {
+    if (operand1 === '') {
+      operand1 = tempValue.join('');
+      $('#display').text('')
+      tempValue = [];
+      op = '-';
+    } else if (operand2 === '') {
+        operand2 = tempValue.join('');
+        $('#display').text('')
+        tempValue = [];
+        op = '-';
+    }
+  }
+  //Set Multiplication Operator
+  if(op === 'X') {
+    if (operand1 === '') {
+      operand1 = tempValue.join('');
+      $('#display').text('')
+      tempValue = [];
+      op = 'X';
+    } else if (operand2 === '') {
+        operand2 = tempValue.join('');
+        $('#display').text('')
+        tempValue = [];
+        op = 'X';
+    }
+  }
+  //Set Division Operator
+  if(op === '/') {
+    if (operand1 === '') {
+      operand1 = tempValue.join('');
+      $('#display').text('')
+      tempValue = [];
+      op = '/';
+    } else if (operand2 === '') {
+        operand2 = tempValue.join('');
+        $('#display').text('')
+        tempValue = [];
+        op = '/';
+    }
+  }
+};
