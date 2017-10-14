@@ -5,6 +5,8 @@
   <title>Calculator</title>
   <!-- Test Dependencies -->
   <link href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css" rel="stylesheet" />
+
+
   <script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.min.js"></script>
   <script>
@@ -36,8 +38,8 @@
     </tr>
     <tr id = "row2">
       <td class="operator" id="clear">C</td>
-      <td>+/-</td>
-      <td>%</td>
+      <td class="specialOp" id="pos/neg">+/-</td>
+      <td class="specialOp" id="percent">%</td>
       <td class="operator" id="divide">/</td>
     </tr>
     <tr id="row3">
@@ -67,7 +69,7 @@
 
   <div id="mocha"></div>
   <script src="public/calc.js"></script>
-
+  <script src="public/style.js" ></script>
 
 </body>
 </html>
