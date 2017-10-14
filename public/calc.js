@@ -9,7 +9,11 @@ var op = null;
 
 $('#clear').click(function(e) {
   // console.log("CLEAR CLICKED");
-    $('#display').text('');
+  $('#display').text('');
+  operand1 = '';
+  operand2 = '';
+  op = '';
+  tempValue = [];
 });
 
 $('.number').click(function(e) {
@@ -21,14 +25,29 @@ $('.number').click(function(e) {
 });
 
 $('.operator').click(function(e) {
-  console.log("Btn clicked");
-  // switch (expression) {
-  //   case expression:
-  //
-  //     break;
-  //   default:
-  //
-  // }
+  op = $(this).text();
+
+  switch (op) {
+    case '+':
+    var result = tempValue.join('');
+      operand1 = result;
+      console.log(result);
+      break;
+    case '-':
+
+      break;
+    case 'X':
+
+      break;
+    case '/':
+
+      break;
+    case '=':
+
+      break;
+    default:
+
+  }
 });
 
 
